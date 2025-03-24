@@ -21,7 +21,7 @@ import Link from 'next/link';
 
 
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "md" | "lg";
@@ -266,12 +266,13 @@ function App() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden absolute top-full inset-x-0 bg-white dark:bg-gray-900 shadow-lg p-4 space-y-4">
-          <button
+          <Button
+            size='md'
             onClick={() => setIsDark(!isDark)}
             className="w-full text-left p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             {isDark ? "Light Mode" : "Dark Mode"}
-          </button>
+          </Button>
           <Link href="/signin">
             <Button size="md" variant="outline" className="w-full">Sign In</Button>
           </Link>
